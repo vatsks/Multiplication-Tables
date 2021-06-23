@@ -13,6 +13,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;int timestable;
+    public void generate(){
+        ArrayList<String> arrayList=new ArrayList<>();
+
+        for (int j=1;j<=10;j++){
+
+            arrayList.add(Integer.toString(j*timestable));
+        }
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
+        listView.setAdapter(arrayAdapter);
+    }
 
 
 
@@ -42,14 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 Log.i("info",Integer.toString(timestable));
 
-                ArrayList<String> arrayList=new ArrayList<>();
-
-                for (int j=1;j<=10;j++){
-
-                    arrayList.add(Integer.toString(j*timestable));
-                }
-                ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
-                listView.setAdapter(arrayAdapter);
+                generate();
 
 
             }
