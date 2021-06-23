@@ -12,12 +12,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    ListView listView;int timestable;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SeekBar seekBar=findViewById(R.id.seekBar);
-        ListView listView=findViewById(R.id.listView);
+
+
+
+        final SeekBar seekBar=findViewById(R.id.seekBar);
+        listView=findViewById(R.id.listView);
         seekBar.setMax(20);
         seekBar.setProgress(10);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -25,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                     int min=1;
-                    int timestable;
+
                     if(progress<min){
                         timestable=min;
                     }
@@ -34,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 Log.i("info",Integer.toString(timestable));
+
                 ArrayList<String> arrayList=new ArrayList<>();
 
                 for (int j=1;j<=10;j++){
 
                     arrayList.add(Integer.toString(j*timestable));
                 }
+                ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
+                listView.setAdapter(arrayAdapter);
 
 
             }
